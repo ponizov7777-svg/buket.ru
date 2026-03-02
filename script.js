@@ -428,7 +428,7 @@ function setupTelegramButton() {
     const text = orderResultText.value;
     if (!text.trim()) return;
 
-    const baseUrl = "https://t.me/belovaiulya";
+    const baseUrl = "https://t.me/ponizovandrey";
     const url = `${baseUrl}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   });
