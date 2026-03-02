@@ -1,5 +1,29 @@
 const bouquets = [
   {
+    id: "single-tulip",
+    name: "Один тюльпан",
+    emoji: "🌷",
+    description: "Один тюльпан в аккуратной упаковке — для небольшого, но очень тёплого жеста.",
+    colors: ["pink", "white", "red"],
+    isTulip: true,
+    isRose: false,
+    roseLength: null,
+    price: 250,
+    tag: "один цветок",
+  },
+  {
+    id: "single-rose-60",
+    name: "Одна роза 60 см",
+    emoji: "🌹",
+    description: "Одна удлинённая роза в стильной упаковке. Цвет можно уточнить во времени подтверждения заказа.",
+    colors: ["red", "white", "pink"],
+    isTulip: false,
+    isRose: true,
+    roseLength: 60,
+    price: 450,
+    tag: "один цветок",
+  },
+  {
     id: "tulip-classic-9",
     name: "Тюльпаны классика (9 шт.)",
     emoji: "🌷",
@@ -347,12 +371,13 @@ function buildOrderText(formData) {
   if (selected.length === 1) {
     const b = selected[0];
     lines.push(`Букет: ${b.name} (${formatPrice(b.price)})`);
-  } else {
+  } else if (selected.length > 1) {
     lines.push("Букеты:");
     selected.forEach((b, index) => {
       lines.push(`  ${index + 1}) ${b.name} (${formatPrice(b.price)})`);
     });
   }
+
   const total = calculateTotal();
   if (total > 0) {
     lines.push("");
