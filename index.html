@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Букеты к 8 марта</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header__badge">8 марта</div>
+      <h1 class="header__title">Букеты для самых любимых</h1>
+      <p class="header__subtitle">
+        Выберите букет, укажите доставку или самовывоз — мы всё остальное сделаем за вас.
+      </p>
+    </header>
+
+    <section class="filters" aria-label="Фильтры букетов">
+      <div class="filters__group">
+        <label class="filters__label">Тип букета</label>
+        <div class="filters__chips" id="typeFilters">
+          <button type="button" class="chip chip--active" data-type="all">Все</button>
+          <button type="button" class="chip" data-type="tulip">Тюльпаны</button>
+          <button type="button" class="chip" data-type="rose">Розы</button>
+          <button type="button" class="chip" data-type="mix">Тюльпаны + розы</button>
+        </div>
+      </div>
+
+      <div class="filters__group" id="roseLengthFilter">
+        <label class="filters__label">Длина роз (см)</label>
+        <div class="filters__chips">
+          <button type="button" class="chip chip--active" data-length="all">Любая</button>
+          <button type="button" class="chip" data-length="40">40</button>
+          <button type="button" class="chip" data-length="60">60</button>
+          <button type="button" class="chip" data-length="80">80</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="catalog" aria-label="Каталог букетов">
+      <div class="catalog__list" id="bouquetList">
+        <!-- Карточки букетов создаются в script.js -->
+      </div>
+    </main>
+
+    <section class="order" aria-label="Оформление заявки">
+      <h2 class="order__title">Оформить заказ</h2>
+      <p class="order__hint">
+        Выберите букет выше, заполните данные — полученный текст можно сразу отправить в Telegram менеджеру.
+      </p>
+      <form class="order__form" id="orderForm">
+        <div class="order__field">
+          <label for="selectedBouquet" class="order__label">Выбранные букеты</label>
+          <textarea
+            id="selectedBouquet"
+            name="selectedBouquet"
+            class="order__textarea order__textarea--result"
+            rows="2"
+            placeholder="Выберите один или несколько букетов выше"
+            readonly
+          ></textarea>
+          <div class="order__total-line" id="orderTotalWrapper">
+            <span class="order__label">Итого к оплате</span>
+            <span class="order__total" id="orderTotal">0 ₽</span>
+          </div>
+        </div>
+
+        <div class="order__field order__field--inline">
+          <div>
+            <label for="customerName" class="order__label">Имя</label>
+            <input id="customerName" name="customerName" class="order__input" type="text" placeholder="Как к вам обращаться" required />
+          </div>
+          <div>
+            <label for="customerPhone" class="order__label">Телефон</label>
+            <input id="customerPhone" name="customerPhone" class="order__input" type="tel" placeholder="+7..." required />
+          </div>
+        </div>
+
+        <div class="order__field">
+          <span class="order__label">Способ получения</span>
+          <div class="order__delivery-options">
+            <label class="radio">
+              <input type="radio" name="deliveryType" value="delivery" checked />
+              <span>Нужна доставка</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="deliveryType" value="pickup" />
+              <span>Заберу в магазине</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="order__field" id="deliveryAddressField">
+          <label for="deliveryAddress" class="order__label">Адрес доставки</label>
+          <input
+            id="deliveryAddress"
+            name="deliveryAddress"
+            class="order__input"
+            type="text"
+            placeholder="Улица, дом, подъезд, этаж, квартира"
+          />
+        </div>
+
+        <div class="order__field">
+          <label for="orderComment" class="order__label">Комментарий для флориста</label>
+          <textarea
+            id="orderComment"
+            name="orderComment"
+            class="order__textarea"
+            rows="3"
+            placeholder="Например: подписать открытку, конкретное время доставки и т.п."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="order__submit">Сформировать заявку</button>
+
+        <div class="order__result" id="orderResult" hidden>
+          <p class="order__result-title">Текст заявки для Telegram</p>
+          <textarea id="orderResultText" class="order__textarea order__textarea--result" rows="5" readonly></textarea>
+          <div class="order__result-actions">
+            <button type="button" class="order__tg" id="sendTelegram">Отправить в Telegram @belovaiulya</button>
+          </div>
+          <p class="order__copy-hint">Проверьте текст и отправьте сообщение менеджеру в Telegram.</p>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p class="footer__text">
+        Магазин букетов &laquo;8 марта&raquo;. Самовывоз: ул. Примерная, 8. Работаем ежедневно.
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
